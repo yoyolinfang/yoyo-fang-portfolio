@@ -1,7 +1,7 @@
 const zh={
-navExp:"经历",navResearch:"研究",navAbout:"关于",navContact:"联系",heroEye:"经济学 · 人工智能 · 战略",
-heroTitle:"研究 <em>AI、市场</em> 与人的决策如何相互影响。",heroLead:"我将新兴技术、市场信号与组织问题，转化为清晰、基于证据的洞察。",
-available:"关注战略、研究与数据分析机会",conversation:"与我联系",explore:"查看我的研究",currently:"正在进行",currentRole:"AI 与组织管理研究",currentOrg:"字节跳动 · 管理研究院",focus:"研究主线",focusText:"AI 如何重塑组织、行业与个体决策。",
+navExp:"经历",navResearch:"研究",navAbout:"关于",navContact:"联系",heroEye:"人工智能 · 市场 · 组织",
+heroTitle:"研究 AI 如何重塑<em>市场、组织</em>与商业决策。",heroLead:"我结合经济学思维、行业研究与数据分析，将新兴技术转化为可落地的洞察。",
+available:"关注战略、研究与数据分析机会",conversation:"与我联系",explore:"查看我的研究",currently:"正在进行",currentRole:"AI 与组织管理研究",currentOrg:"字节跳动 · 管理研究院",focus:"研究主线",focusText:"AI 应用、组织变革与科技驱动的市场变化。",
 expEye:"职业经历",expTitle:"跨越组织与市场的研究经历。",date1:"2026 — 至今",company1:"字节跳动",role1:"AI 与组织管理研究实习生",place1:"北京",body1:"综合行业报告、专家访谈与公开数据，研究 AI 驱动的组织管理；梳理岗位架构、审批、汇报及职级等工作流，为产品、研发与 HRBP 协同优化人力系统提供研究支持。",tag11:"组织设计",tag13:"定性研究",
 company2:"国泰海通证券",role2:"消费电子行业研究实习生",place2:"北京 / 东京",body2:"研究小米及新兴消费电子公司，搭建 AI 智能眼镜市场规模模型，并从 SoC 架构、BOM 成本、功耗与量产能力等维度完成硬件深度研究。",tag21:"证券研究",tag22:"市场测算",tag23:"财务分析",
 company3:"海通证券",role3:"家电行业研究实习生",place3:"北京",body3:"为覆盖的 10 余家公司撰写行业报告，将宏观指标、原材料成本、公司财务与政策变化连接至盈利能力及 EPS 影响。",tag31:"行业研究",tag32:"回归分析",tag33:"政策分析",
