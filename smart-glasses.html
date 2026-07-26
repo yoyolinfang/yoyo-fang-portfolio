@@ -56,10 +56,10 @@
         <p class="section-label rose">02 · RESEARCH PIPELINE</p>
         <h2>From unstructured reviews to feature-level evidence.</h2>
         <div class="pipeline">
-          <article><span>01</span><h3>Segment</h3><p>Split each review into individual sentences so mixed opinions are not assigned to every feature.</p></article>
-          <article><span>02</span><h3>Identify</h3><p>Match sentences to curated keyword dictionaries for battery, camera, audio, and Smart/AI functions.</p></article>
-          <article><span>03</span><h3>Score</h3><p>Use VADER to translate sentence-level language into a compound sentiment score from −1 to +1.</p></article>
-          <article><span>04</span><h3>Model</h3><p>Estimate exploratory OLS models with star rating as the outcome and feature sentiment as predictors.</p></article>
+          <article tabindex="0"><span>01</span><h3>Segment</h3><p>Split each review into individual sentences so mixed opinions are not assigned to every feature.</p><small>645 reviews → sentence units</small></article>
+          <article tabindex="0"><span>02</span><h3>Identify</h3><p>Match sentences to curated keyword dictionaries for battery, camera, audio, and Smart/AI functions.</p><small>4 feature dictionaries</small></article>
+          <article tabindex="0"><span>03</span><h3>Score</h3><p>Apply VADER only to relevant sentences, then code negative, neutral/no mention, or positive sentiment.</p><small>−1 · 0 · +1</small></article>
+          <article tabindex="0"><span>04</span><h3>Model</h3><p>Run pooled OLS, product controls, HC3, VIF, interactions, whole-review, and ordered-logit checks.</p><small>7 analytical checks</small></article>
         </div>
         <div class="code-card" aria-label="Complete VADER feature sentiment pipeline">
           <div class="code-top">
@@ -79,15 +79,23 @@
         </div>
         <p>Model 2 controls for product-group differences. Bars show coefficients; significance labels are based on the saved notebook output.</p>
       </div>
-      <div class="coefficient-card">
-        <div class="coef-row significant"><span>Camera</span><div class="bar"><i style="--value:100%"></i></div><strong>+0.636</strong><small>p&lt;.001</small></div>
-        <div class="coef-row significant"><span>Smart / AI</span><div class="bar"><i style="--value:64%"></i></div><strong>+0.408</strong><small>p=.001</small></div>
-        <div class="coef-row significant"><span>Audio</span><div class="bar"><i style="--value:40%"></i></div><strong>+0.254</strong><small>p=.016</small></div>
-        <div class="coef-row"><span>Battery</span><div class="bar"><i style="--value:2%"></i></div><strong>+0.011</strong><small>p=.921</small></div>
+      <div class="model-tabs" role="tablist" aria-label="Choose a regression view">
+        <button role="tab" data-model="model1">Model 1</button>
+        <button role="tab" data-model="model2" aria-selected="true">Model 2</button>
+        <button role="tab" data-model="interaction">Gen 1 vs Gen 2</button>
+        <button role="tab" data-model="robustness">Method check</button>
+      </div>
+      <div class="coefficient-card" id="model-chart" aria-live="polite">
       </div>
       <div class="model-note">
-        <strong>Model context</strong>
-        <p>Across all 645 reviews, Model 2 explained 15.6% of rating variation (adjusted R²=.150). The Gen 2 dummy was positive and significant (β=.424, p&lt;.001), while the maximum VIF was 1.184. These are associations, not causal effects.</p>
+        <strong id="model-note-title">Model 2 context</strong>
+        <p id="model-note-copy">Across all 645 reviews, Model 2 explained 15.6% of rating variation (adjusted R²=.150). The Gen 2 dummy was positive and significant (β=.424, p&lt;.001), while the maximum VIF was 1.184. These are associations, not causal effects.</p>
+      </div>
+      <div class="mention-strip">
+        <div><strong>52.2%</strong><span>Camera mentioned</span></div>
+        <div><strong>36.4%</strong><span>Audio mentioned</span></div>
+        <div><strong>26.4%</strong><span>Battery mentioned</span></div>
+        <div><strong>24.2%</strong><span>Smart / AI mentioned</span></div>
       </div>
     </section>
 
@@ -137,19 +145,6 @@
   </main>
 
   <footer><span>© 2026 YOYO FANG</span><a href="#top">BACK TO TOP ↑</a></footer>
-  <script>
-    fetch("feature_sentiment.py")
-      .then((response) => {
-        if (!response.ok) throw new Error("Unable to load code");
-        return response.text();
-      })
-      .then((code) => {
-        document.getElementById("vader-code").textContent = code;
-      })
-      .catch(() => {
-        document.getElementById("vader-code").textContent =
-          "The code preview could not be loaded. Use “Download .py” above.";
-      });
-  </script>
+  <script src="case-study.js"></script>
 </body>
 </html>
