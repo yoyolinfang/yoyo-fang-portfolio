@@ -61,12 +61,12 @@
           <article><span>03</span><h3>Score</h3><p>Use VADER to translate sentence-level language into a compound sentiment score from −1 to +1.</p></article>
           <article><span>04</span><h3>Model</h3><p>Estimate exploratory OLS models with star rating as the outcome and feature sentiment as predictors.</p></article>
         </div>
-        <div class="code-card" aria-label="Example feature sentiment logic">
-          <div class="code-top"><span>feature_sentiment.py</span><span>PYTHON</span></div>
-          <pre><code>for sentence in review:
-    feature = match_feature(sentence, dictionaries)
-    sentiment = vader.polarity_scores(sentence)["compound"]
-    observations.append([rating, feature, sentiment])</code></pre>
+        <div class="code-card" aria-label="Complete VADER feature sentiment pipeline">
+          <div class="code-top">
+            <span>feature_sentiment.py</span>
+            <a href="feature_sentiment.py" download>DOWNLOAD .PY ↓</a>
+          </div>
+          <pre class="scroll-code"><code id="vader-code">Loading the complete Python pipeline…</code></pre>
         </div>
       </div>
     </section>
@@ -137,5 +137,19 @@
   </main>
 
   <footer><span>© 2026 YOYO FANG</span><a href="#top">BACK TO TOP ↑</a></footer>
+  <script>
+    fetch("feature_sentiment.py")
+      .then((response) => {
+        if (!response.ok) throw new Error("Unable to load code");
+        return response.text();
+      })
+      .then((code) => {
+        document.getElementById("vader-code").textContent = code;
+      })
+      .catch(() => {
+        document.getElementById("vader-code").textContent =
+          "The code preview could not be loaded. Use “Download .py” above.";
+      });
+  </script>
 </body>
 </html>

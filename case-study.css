@@ -57,7 +57,13 @@ h2 { margin: 0; max-width: 760px; font-size: clamp(3rem, 5.4vw, 6rem); font-weig
 .pipeline p { margin: 0; color: #bdb5b1; font-size: 13px; line-height: 1.65; }
 .code-card { margin-top: 18px; overflow: hidden; border: 1px solid #ffffff1a; border-radius: 22px; background: #17171a; }
 .code-top { padding: 15px 20px; display: flex; justify-content: space-between; border-bottom: 1px solid #ffffff14; color: #9c9491; font-size: 9px; font-weight: 700; letter-spacing: 0.12em; }
+.code-top a { color: #d994a1; }
 pre { overflow-x: auto; margin: 0; padding: 28px; color: #e9dfe1; font: 13px/1.75 ui-monospace, SFMono-Regular, Menlo, monospace; }
+.scroll-code { height: 440px; overflow: auto; scrollbar-color: #8f6670 #202024; scrollbar-width: thin; }
+.scroll-code::-webkit-scrollbar { width: 10px; height: 10px; }
+.scroll-code::-webkit-scrollbar-track { background: #202024; }
+.scroll-code::-webkit-scrollbar-thumb { border: 2px solid #202024; border-radius: 999px; background: #8f6670; }
+.scroll-code code { white-space: pre; }
 
 .finding-head { display: grid; grid-template-columns: 1.45fr 0.55fr; gap: 70px; align-items: end; }
 .finding-head > p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
