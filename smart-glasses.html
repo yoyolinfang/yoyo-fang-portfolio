@@ -8,6 +8,15 @@
   <link rel="stylesheet" href="case-study.css">
 </head>
 <body id="top">
+  <div class="reading-progress" aria-hidden="true"><span></span></div>
+  <nav class="chapter-rail" aria-label="Case study chapters">
+    <a href="#top" data-chapter="top"><span>00</span><b>Intro</b></a>
+    <a href="#question" data-chapter="question"><span>01</span><b>Question</b></a>
+    <a href="#pipeline" data-chapter="pipeline"><span>02</span><b>Method</b></a>
+    <a href="#findings" data-chapter="findings"><span>03</span><b>Findings</b></a>
+    <a href="#survey" data-chapter="survey"><span>04</span><b>Survey</b></a>
+    <a href="#limits" data-chapter="limits"><span>05</span><b>Next</b></a>
+  </nav>
   <header class="case-nav">
     <a class="case-brand" href="index.html"><span>YF</span><b>YoYo Fang</b></a>
     <a class="back" href="index.html#research">← Back to selected research</a>
@@ -35,7 +44,7 @@
       <div><strong>2</strong><span>product generations</span></div>
     </section>
 
-    <section class="case-section split">
+    <section class="case-section split" id="question">
       <div>
         <p class="section-label">01 · THE QUESTION</p>
         <h2>Connecting what consumers say to how they rate.</h2>
@@ -51,7 +60,7 @@
       </div>
     </section>
 
-    <section class="dark-section">
+    <section class="dark-section" id="pipeline">
       <div class="case-section">
         <p class="section-label rose">02 · RESEARCH PIPELINE</p>
         <h2>From unstructured reviews to feature-level evidence.</h2>
@@ -87,19 +96,40 @@
       </div>
       <div class="coefficient-card" id="model-chart" aria-live="polite">
       </div>
+      <aside class="coefficient-inspector" id="coefficient-inspector" aria-live="polite">
+        <span class="inspector-kicker">CLICK A RESULT TO INTERPRET</span>
+        <div>
+          <strong id="inspector-title">Camera sentiment</strong>
+          <p id="inspector-copy">Select any coefficient above to see what it means in plain language.</p>
+        </div>
+        <b id="inspector-value">β +0.636</b>
+      </aside>
       <div class="model-note">
         <strong id="model-note-title">Model 2 context</strong>
         <p id="model-note-copy">Across all 645 reviews, Model 2 explained 15.6% of rating variation (adjusted R²=.150). The Gen 2 dummy was positive and significant (β=.424, p&lt;.001), while the maximum VIF was 1.184. These are associations, not causal effects.</p>
       </div>
       <div class="mention-strip">
-        <div><strong>52.2%</strong><span>Camera mentioned</span></div>
-        <div><strong>36.4%</strong><span>Audio mentioned</span></div>
-        <div><strong>26.4%</strong><span>Battery mentioned</span></div>
-        <div><strong>24.2%</strong><span>Smart / AI mentioned</span></div>
+        <button data-feature="camera"><strong>52.2%</strong><span>Camera mentioned</span></button>
+        <button data-feature="audio"><strong>36.4%</strong><span>Audio mentioned</span></button>
+        <button data-feature="battery"><strong>26.4%</strong><span>Battery mentioned</span></button>
+        <button data-feature="smart"><strong>24.2%</strong><span>Smart / AI mentioned</span></button>
+      </div>
+      <div class="evidence-lab">
+        <div class="evidence-orbit" aria-hidden="true">
+          <div class="orbit-ring ring-one"></div><div class="orbit-ring ring-two"></div>
+          <span class="orbit-core" id="orbit-core">CAMERA</span>
+          <i class="dot dot-one"></i><i class="dot dot-two"></i><i class="dot dot-three"></i>
+        </div>
+        <div class="evidence-copy">
+          <p class="section-label">FEATURE EXPLORER</p>
+          <span id="evidence-count">337 of 645 reviews mentioned camera</span>
+          <h3 id="evidence-title">Camera was both widely discussed and strongly associated with ratings.</h3>
+          <p id="evidence-text">Its Model 2 coefficient was +0.636 (p&lt;.001), the largest among the four feature-sentiment measures.</p>
+        </div>
       </div>
     </section>
 
-    <section class="survey-section">
+    <section class="survey-section" id="survey">
       <div class="case-section">
         <div class="finding-head">
           <div>
@@ -119,7 +149,7 @@
       </div>
     </section>
 
-    <section class="case-section split">
+    <section class="case-section split" id="limits">
       <div>
         <p class="section-label">05 · LIMITATIONS & NEXT STEP</p>
         <h2>A transparent snapshot of work in progress.</h2>
