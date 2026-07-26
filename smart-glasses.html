@@ -75,19 +75,19 @@
       <div class="finding-head">
         <div>
           <p class="section-label">03 · REGRESSION FINDINGS</p>
-          <h2>Smart/AI sentiment showed the clearest association.</h2>
+          <h2>Camera sentiment showed the strongest association.</h2>
         </div>
         <p>Model 2 controls for product-group differences. Bars show coefficients; significance labels are based on the saved notebook output.</p>
       </div>
       <div class="coefficient-card">
-        <div class="coef-row significant"><span>Smart / AI</span><div class="bar"><i style="--value:95%"></i></div><strong>+0.479</strong><small>p=.004</small></div>
-        <div class="coef-row marginal"><span>Camera</span><div class="bar"><i style="--value:74%"></i></div><strong>+0.375</strong><small>p=.057</small></div>
-        <div class="coef-row"><span>Audio</span><div class="bar"><i style="--value:29%"></i></div><strong>+0.149</strong><small>p=.485</small></div>
-        <div class="coef-row"><span>Battery</span><div class="bar"><i style="--value:10%"></i></div><strong>+0.053</strong><small>p=.805</small></div>
+        <div class="coef-row significant"><span>Camera</span><div class="bar"><i style="--value:100%"></i></div><strong>+0.636</strong><small>p&lt;.001</small></div>
+        <div class="coef-row significant"><span>Smart / AI</span><div class="bar"><i style="--value:64%"></i></div><strong>+0.408</strong><small>p=.001</small></div>
+        <div class="coef-row significant"><span>Audio</span><div class="bar"><i style="--value:40%"></i></div><strong>+0.254</strong><small>p=.016</small></div>
+        <div class="coef-row"><span>Battery</span><div class="bar"><i style="--value:2%"></i></div><strong>+0.011</strong><small>p=.921</small></div>
       </div>
       <div class="model-note">
         <strong>Model context</strong>
-        <p>Among 288 feature-bearing observations, the product-controlled model explained 12.2% of rating variation. The product-group coefficient was positive and significant (β=0.367, p=.037). These are associations, not causal effects.</p>
+        <p>Across all 645 reviews, Model 2 explained 15.6% of rating variation (adjusted R²=.150). The Gen 2 dummy was positive and significant (β=.424, p&lt;.001), while the maximum VIF was 1.184. These are associations, not causal effects.</p>
       </div>
     </section>
 
@@ -106,7 +106,7 @@
         </div>
         <div class="takeaway">
           <span>EARLY SIGNAL</span>
-          <p>Smart/AI functions were the most frequently selected deal-breaker before purchase, while review-based modeling also found Smart/AI sentiment to have the clearest positive association with ratings.</p>
+          <p>Smart/AI functions were the most frequently selected pre-purchase deal-breaker, while Camera sentiment had the largest coefficient in the review model—an early expectation-versus-experience gap to test formally.</p>
         </div>
       </div>
     </section>
@@ -117,13 +117,13 @@
         <h2>A transparent snapshot of work in progress.</h2>
       </div>
       <div class="prose">
-        <p>The current pooled model assumes feature coefficients are the same across product generations. An interaction model is planned to test whether, for example, battery sentiment has a different association with ratings for Gen 1 and Gen 2.</p>
-        <p>Formal statistical analysis of the survey is also pending. Until then, survey patterns are presented as descriptive signals rather than confirmed differences.</p>
+        <p>The interaction model found that feature associations differed jointly across generations (F-test p=.047). Camera sentiment had a stronger association for Gen 1 than Gen 2; its interaction term was negative and significant (β=−.446, p=.025). The other feature interactions were not statistically significant.</p>
+        <p>Formal statistical analysis of the survey is still pending. Until then, survey patterns are presented as descriptive signals rather than confirmed differences.</p>
         <ul class="status-list">
           <li class="done">Review collection and cleaning</li>
           <li class="done">Sentence-level sentiment pipeline</li>
           <li class="done">Whole-review comparison and OLS models</li>
-          <li>Generation × feature interaction model</li>
+          <li class="done">Generation × feature interaction model</li>
           <li>Survey statistical analysis</li>
         </ul>
       </div>
