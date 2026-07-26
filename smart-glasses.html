@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A consumer analytics case study by YoYo Fang on feature-specific sentiment in AI smart glasses reviews.">
+  <title>AI Smart Glasses Sentiment Study | YoYo Fang</title>
+  <link rel="stylesheet" href="case-study.css">
+</head>
+<body id="top">
+  <header class="case-nav">
+    <a class="case-brand" href="index.html"><span>YF</span><b>YoYo Fang</b></a>
+    <a class="back" href="index.html#research">← Back to selected research</a>
+  </header>
+
+  <main>
+    <section class="case-hero">
+      <div class="hero-meta">
+        <span>INDEPENDENT SEMINAR PROJECT</span>
+        <span>APR — JUL 2026</span>
+      </div>
+      <p class="eyebrow">CONSUMER ANALYTICS · AI SMART GLASSES</p>
+      <h1>What actually drives satisfaction with AI smart glasses?</h1>
+      <p class="dek">An exploratory study of how feature-specific sentiment toward battery, camera, audio, and Smart/AI functions is associated with customer ratings—and how post-purchase experience differs from pre-purchase expectations.</p>
+      <div class="hero-actions">
+        <a class="primary" href="#findings">See the findings ↓</a>
+        <a href="https://tally.so/r/NpE5yp" target="_blank" rel="noreferrer">View survey ↗</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Project metrics">
+      <div><strong>645</strong><span>Best Buy reviews</span></div>
+      <div><strong>50</strong><span>unique survey respondents</span></div>
+      <div><strong>4</strong><span>product features studied</span></div>
+      <div><strong>2</strong><span>product generations</span></div>
+    </section>
+
+    <section class="case-section split">
+      <div>
+        <p class="section-label">01 · THE QUESTION</p>
+        <h2>Connecting what consumers say to how they rate.</h2>
+      </div>
+      <div class="prose">
+        <p>The project asks which product features are most strongly associated with customer ratings of Ray-Ban Meta smart glasses, pooling Gen 1 and Gen 2 reviews for the main analysis.</p>
+        <p>A second question compares review-based evidence with a survey of perceived feature importance before ownership: do the features people expect to matter most match the features associated with their post-purchase ratings?</p>
+        <dl>
+          <div><dt>Role</dt><dd>Sole researcher</dd></div>
+          <div><dt>Context</dt><dd>University seminar project</dd></div>
+          <div><dt>Tools</dt><dd>Python · pandas · VADER · statsmodels · Excel</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="dark-section">
+      <div class="case-section">
+        <p class="section-label rose">02 · RESEARCH PIPELINE</p>
+        <h2>From unstructured reviews to feature-level evidence.</h2>
+        <div class="pipeline">
+          <article><span>01</span><h3>Segment</h3><p>Split each review into individual sentences so mixed opinions are not assigned to every feature.</p></article>
+          <article><span>02</span><h3>Identify</h3><p>Match sentences to curated keyword dictionaries for battery, camera, audio, and Smart/AI functions.</p></article>
+          <article><span>03</span><h3>Score</h3><p>Use VADER to translate sentence-level language into a compound sentiment score from −1 to +1.</p></article>
+          <article><span>04</span><h3>Model</h3><p>Estimate exploratory OLS models with star rating as the outcome and feature sentiment as predictors.</p></article>
+        </div>
+        <div class="code-card" aria-label="Example feature sentiment logic">
+          <div class="code-top"><span>feature_sentiment.py</span><span>PYTHON</span></div>
+          <pre><code>for sentence in review:
+    feature = match_feature(sentence, dictionaries)
+    sentiment = vader.polarity_scores(sentence)["compound"]
+    observations.append([rating, feature, sentiment])</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section" id="findings">
+      <div class="finding-head">
+        <div>
+          <p class="section-label">03 · REGRESSION FINDINGS</p>
+          <h2>Smart/AI sentiment showed the clearest association.</h2>
+        </div>
+        <p>Model 2 controls for product-group differences. Bars show coefficients; significance labels are based on the saved notebook output.</p>
+      </div>
+      <div class="coefficient-card">
+        <div class="coef-row significant"><span>Smart / AI</span><div class="bar"><i style="--value:95%"></i></div><strong>+0.479</strong><small>p=.004</small></div>
+        <div class="coef-row marginal"><span>Camera</span><div class="bar"><i style="--value:74%"></i></div><strong>+0.375</strong><small>p=.057</small></div>
+        <div class="coef-row"><span>Audio</span><div class="bar"><i style="--value:29%"></i></div><strong>+0.149</strong><small>p=.485</small></div>
+        <div class="coef-row"><span>Battery</span><div class="bar"><i style="--value:10%"></i></div><strong>+0.053</strong><small>p=.805</small></div>
+      </div>
+      <div class="model-note">
+        <strong>Model context</strong>
+        <p>Among 288 feature-bearing observations, the product-controlled model explained 12.2% of rating variation. The product-group coefficient was positive and significant (β=0.367, p=.037). These are associations, not causal effects.</p>
+      </div>
+    </section>
+
+    <section class="survey-section">
+      <div class="case-section">
+        <div class="finding-head">
+          <div>
+            <p class="section-label">04 · EXPECTATION SURVEY</p>
+            <h2>A complementary view of what buyers expect.</h2>
+          </div>
+          <p>The survey collected 51 submissions from 50 unique respondents. Most had not previously purchased AI smart glasses, making the results useful as an exploratory view of pre-purchase priorities.</p>
+        </div>
+        <div class="survey-grid">
+          <figure><img src="assets/survey-overview.webp" alt="Tally survey overview showing 50 unique respondents"><figcaption>Survey reach and respondent overview</figcaption></figure>
+          <figure><img src="assets/survey-results.webp" alt="Tally charts summarizing feature expectations"><figcaption>Early feature-priority responses</figcaption></figure>
+        </div>
+        <div class="takeaway">
+          <span>EARLY SIGNAL</span>
+          <p>Smart/AI functions were the most frequently selected deal-breaker before purchase, while review-based modeling also found Smart/AI sentiment to have the clearest positive association with ratings.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section split">
+      <div>
+        <p class="section-label">05 · LIMITATIONS & NEXT STEP</p>
+        <h2>A transparent snapshot of work in progress.</h2>
+      </div>
+      <div class="prose">
+        <p>The current pooled model assumes feature coefficients are the same across product generations. An interaction model is planned to test whether, for example, battery sentiment has a different association with ratings for Gen 1 and Gen 2.</p>
+        <p>Formal statistical analysis of the survey is also pending. Until then, survey patterns are presented as descriptive signals rather than confirmed differences.</p>
+        <ul class="status-list">
+          <li class="done">Review collection and cleaning</li>
+          <li class="done">Sentence-level sentiment pipeline</li>
+          <li class="done">Whole-review comparison and OLS models</li>
+          <li>Generation × feature interaction model</li>
+          <li>Survey statistical analysis</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="next-project">
+      <p>SELECTED RESEARCH · 02</p>
+      <h2>Does AI adoption create growth before profitability?</h2>
+      <a href="index.html#research">Return to all research →</a>
+    </section>
+  </main>
+
+  <footer><span>© 2026 YOYO FANG</span><a href="#top">BACK TO TOP ↑</a></footer>
+</body>
+</html>

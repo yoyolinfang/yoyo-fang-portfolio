@@ -14,3 +14,31 @@
 .portrait::after {
   background: linear-gradient(180deg, transparent 58%, rgba(29, 27, 30, 0.6));
 }
+
+.projects article {
+  position: relative;
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+
+.projects article:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.32);
+}
+
+.project-link {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.project-link:focus-visible {
+  outline: 2px solid #e4a0ad;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projects article {
+    transition: none;
+  }
+}
