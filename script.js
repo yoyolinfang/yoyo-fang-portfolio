@@ -7,7 +7,7 @@ date2:"2025年7月 — 2026年7月",company2:"国泰海通证券",role2:"消费�
 date3:"2024年11月 — 2025年7月",company3:"海通证券",role3:"家电行业研究实习生",place3:"北京 / 线上",body3:"撰写覆盖十余家家电公司的行业研究报告，结合宏观指标、公司财务、原材料成本与回归分析研究盈利驱动因素；评估贸易及补贴政策对公司经营与盈利表现的潜在影响。",tag31:"行业研究",tag32:"财务分析",tag33:"政策分析",
 date4:"2024年10月 — 2025年1月",company4:"Prozparity Energy",role4:"市场营销实习生",place4:"香港 / 线上",body4:"负责 Instagram、LinkedIn 与 Facebook 数字营销活动，并根据互动数据优化内容策略；运用 SEO/SEM、关键词研究与 Google Analytics，提升跨境电商的自然流量及转化表现。",tag41:"数字营销",tag42:"SEO / SEM",tag43:"消费者分析",
 researchEye:"精选研究",researchTitle:"那些让我继续追问的问题。",p1label:"消费者分析 · 2026",p1title:"AI 智能眼镜的满意度究竟由什么驱动？",p1body:"使用 Python 与 VADER 搭建功能级情感分析流程，并检验电池、相机、音频和智能功能与用户评分之间的关系。",p1foot:"645 条评论 · 50 位问卷受访者 · 回归分析",
-p2label:"独立研究 · FESS 2025",p2title:"企业采用 AI，会先带来增长还是利润？",p2body:"研究 EssilorLuxottica 的 AI 产品扩张，将收入增长、研发投入与运营成本纳入技术颠覆分析框架。",p2foot:"独立作者 · 论文获会议录用",
+p2label:"正式发表 · FESS 2025",p2title:"AI 应用及其对传统眼镜企业的财务影响：EssilorLuxottica 案例",p2body:"以 EssilorLuxottica 为案例，分析 AI 智能眼镜如何影响收入增长、运营费用与研发投入。",p2pub:"出版信息",p2authorLabel:"作者",p2pagesLabel:"论文集",p2pages:"FESS · 第 1 卷 · 407–412 页",p2foot:"SciTePress 正式出版 · 2026",
 p3label:"健康经济学 · 2026",p3title:"政策能消除激励，还是只会转移激励？",p3body:"以医生诱导需求和激励相容为框架，研究中国药品零加成政策是否导致支出从药品转向其他医疗服务。",p3foot:"政策分析 · 因果证据整合",
 aboutEye:"关于我",aboutTitle:"用经济学视角，拆解现实世界里的复杂问题。",aboutBody:"我是早稻田大学全球政治经济学专业学生。我的工作位于经济学思维和应用研究的交叉点：从宽泛、模糊的问题出发，找到合适的数据与框架，再把分析变成真正可以用于决策的答案。",school:"早稻田大学",degree:"全球政治经济学学士 · 2023–2027",languagesLabel:"工作语言",toolkit:"研究工具",econometrics:"计量经济学",marketResearch:"市场研究",visualization:"数据可视化",financial:"财务分析",languages:"中文 · 母语 / 英文 · 流利 / 日语 · 日常交流",contactEye:"保持联系",contactTitle:"有一个值得研究的问题？",contactBody:"我很乐意讨论 AI、战略、市场，以及组织如何做出决策。",footer:"由好奇心、证据与清晰思考驱动。"
 };
@@ -22,3 +22,12 @@ function setLang(lang){
 }
 document.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
 setLang(localStorage.getItem("portfolio-language")==="zh"?"zh":"en");
+
+const featuredPaper=document.querySelector(".featured-paper");
+if(featuredPaper&&window.matchMedia("(pointer:fine)").matches&&!window.matchMedia("(prefers-reduced-motion:reduce)").matches){
+  featuredPaper.addEventListener("pointermove",event=>{
+    const bounds=featuredPaper.getBoundingClientRect();
+    featuredPaper.style.setProperty("--glow-x",`${event.clientX-bounds.left}px`);
+    featuredPaper.style.setProperty("--glow-y",`${event.clientY-bounds.top}px`);
+  });
+}
